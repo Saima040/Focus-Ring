@@ -1,0 +1,19 @@
+{
+  "name": "focus-ring",
+  "version": "1.0.0",
+  "description": "A keyboard-only puzzle game. Hop a funny focus ring around fake web pages. 50 worlds, 175 levels.",
+  "private": true,
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node tools/serve.js",
+    "verify": "node tools/verify.js",
+    "e2e": "node tools/e2e.js",
+    "test": "node tools/verify.js && node tools/e2e.js",
+    "levels": "node tools/export-levels.js",
+    "shots": "node tools/screenshots.js"
+  },
+  "engines": { "node": ">=18" },
+  "devDependencies": { "playwright": "^1.48.0" },
+  "keywords": ["game", "keyboard", "accessibility", "focus", "puzzle", "html", "javascript", "no-dependencies"]
+}

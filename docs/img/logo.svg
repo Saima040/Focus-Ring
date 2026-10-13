@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img" aria-label="Focus Ring">
+  <rect width="640" height="220" rx="28" fill="#2b1b4a"/>
+  <g transform="translate(40 40)">
+    <rect x="0" y="0" width="140" height="140" rx="22" fill="#ffffff"/>
+    <rect x="18" y="26" width="104" height="14" rx="7" fill="#d9cdf5"/>
+    <rect x="18" y="52" width="70" height="14" rx="7" fill="#d9cdf5"/>
+    <rect x="18" y="88" width="104" height="32" rx="16" fill="#7c5cff"/>
+    <rect x="11" y="81" width="118" height="46" rx="23" fill="none" stroke="#ffc83d" stroke-width="6" stroke-dasharray="14 8"/>
+    <circle cx="104" cy="104" r="5" fill="#2b1b4a"/><circle cx="88" cy="104" r="5" fill="#2b1b4a"/>
+  </g>
+  <text x="215" y="108" font-family="Fredoka, Nunito, Arial Rounded MT Bold, Arial, sans-serif" font-size="64" font-weight="700" fill="#ffffff">Focus Ring</text>
+  <text x="217" y="150" font-family="Nunito, Arial, sans-serif" font-size="24" fill="#ffc83d">Tab. Hop. Win. No mouse allowed.</text>
+</svg>
