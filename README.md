@@ -2,7 +2,7 @@
 
 A keyboard-only puzzle game. You are the focus ring, the outline that moves when you press Tab on a web page. Each level is a fake web page with a goal. Reach it using only the keyboard, in as few key presses as possible.
 
-**Play:** https://focus-ring/
+**Play:** https://saima040.github.io/Focus-Ring/
 
 
 ![Gameplay](docs/img/play-light.png)
