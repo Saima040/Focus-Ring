@@ -1,14 +1,19 @@
-A keyboard-only puzzle game. You are the focus ring, the outline that moves when you press Tab on a web page. Each level is a fake web page with a goal. Reach it using only the keyboard, in as few key presses as possible.
+# Focus Ring
 
-**Play:** https://saima040.github.io/Focus-Ring/
+A keyboard-only puzzle game about web accessibility. You play the focus ring, the outline that moves when you press Tab, and reach each fake web page's goal in as few key presses as possible.
 
+**[▶ Play it live](https://saima040.github.io/Focus-Ring/)**
 
 ![Gameplay](docs/img/play-light.png)
 
-- 50 worlds, 175 levels
-- Light and dark theme, sound on/off
+## Highlights
+
+- 50 worlds and 175 levels in one HTML file, with no dependencies and no backend
+- Every level is proven winnable by a breadth-first solver, which also computes the best possible score (par)
+- Automated tests replay all 175 levels in a real browser with real key presses
+- Light and dark themes, sound on/off, saved progress
 - Works on phones with an on-screen key row
-- One HTML file, no dependencies, no server
+- Teaches real keyboard-accessibility ideas: focus order, focus traps, skip links, menus, popups that steal focus
 
 ## How to play
 
@@ -22,7 +27,9 @@ A keyboard-only puzzle game. You are the focus ring, the outline that moves when
 
 On touch devices, tap the on-screen keys.
 
-**Scoring.** Every key press counts, including useless ones. *Par* is the fewest presses that can win, computed by a solver.
+### Scoring
+
+Every key press counts, including useless ones. **Par** is the fewest presses that can win, computed by a solver.
 
 | Presses | Stars |
 |---|---|
@@ -32,13 +39,26 @@ On touch devices, tap the on-screen keys.
 
 One star unlocks the next level. Replaying keeps your best result. Some levels have a clock: the page closes after a set number of presses (always above par).
 
-**Twists** that appear in levels: Tab running backwards, a broken key (Space, Enter or Tab), popups that steal focus every nth press, a chat widget that steals focus, a ring that drifts to the next element, focus traps, and clocks.
+### Twists
+
+Tab running backwards, a broken key (Space, Enter or Tab), popups that steal focus every nth press, a chat widget that steals focus, a ring that drifts to the next element, focus traps, and clocks.
 
 All levels with par, clock, goal and solutions: [docs/LEVELS.md](docs/LEVELS.md) ([CSV](docs/levels.csv)).
 
-## Saving
+### Saving
 
 No account or backend. Progress is stored in the browser's `localStorage` (`focusring-stars`, `focusring-best`, `focusring-theme`, `focusring-muted`). It stays on that browser and device, and is lost if site data is cleared.
+
+## Technical decisions
+
+- **Pure game engine, separate from the UI.** The same logic runs in the browser and in Node, which made solving and automated testing possible.
+- **Solver-computed par.** Scores are the true minimum found by breadth-first search, not hand-tuned numbers.
+- **Two-pass clock limits.** Time limits depend on par, and par depends on the limits, so they are computed in two passes and stored.
+- **No framework, no build step.** Plain HTML, CSS and JavaScript. It works offline and deploys as a static file.
+- **Progress in `localStorage`.** No accounts, no server.
+- **Tested in a real browser.** Every level is replayed at par with real key presses and must give 3 stars.
+
+Details: [docs/HOW_IT_WORKS.md](docs/HOW_IT_WORKS.md).
 
 ## Run locally
 
@@ -69,19 +89,22 @@ If Playwright cannot download Chromium: `CHROMIUM_PATH=/path/to/chrome npm run e
 index.html        the whole game (engine, levels, UI)
 tools/            verify, e2e, serve, export-levels, screenshots
 docs/             LEVELS.md, levels.csv, HOW_IT_WORKS.md, PUBLISHING.md, CHANGELOG.md, img/
-.github/          workflows, issue templates, CONTRIBUTING, CODE_OF_CONDUCT, SECURITY
 LICENSE, package.json, README.md
 ```
 
-The engine (pure logic, between `// <engine>` and `// </engine>` in `index.html`) is separate from the UI. A breadth-first solver finds each level's par; results are stored in `PARS_PRE`. Details: [docs/HOW_IT_WORKS.md](docs/HOW_IT_WORKS.md).
+The engine (pure logic, between `// <engine>` and `// </engine>` in `index.html`) is separate from the UI. A breadth-first solver finds each level's par, and the results are stored in `PARS_PRE`.
 
 ## Deploy
 
-See [docs/PUBLISHING.md](docs/PUBLISHING.md) for GitHub and GitHub Pages steps. After deploying, replace `YOUR-USERNAME` here and make the `og:image` URL in `index.html` absolute.
+See [docs/PUBLISHING.md](docs/PUBLISHING.md) for GitHub and GitHub Pages steps.
 
 ## Contributing
 
-See [CONTRIBUTING.md](.github/CONTRIBUTING.md). New levels must be added at the end of the list so saved stars stay correct.
+New levels must be added at the end of the level list so players' saved stars stay correct. Run `npm run verify` before changing levels.
+
+## About this project
+
+Designed and directed by Saima. Built with Claude (Anthropic's AI assistant) through iterative prompting, testing and review.
 
 ## License
 
